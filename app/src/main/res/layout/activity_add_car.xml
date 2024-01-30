@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddCar">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp">
+
+        <ImageView
+            android:id="@+id/btnBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="15dp"
+            android:contentDescription="Back Button"
+            android:src="@drawable/ic_baseline_arrow_back_24"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/my_primary" />
+
+        <TextView
+            android:id="@+id/amazonName"
+            android:layout_width="0dp"
+            android:layout_height="42dp"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="40dp"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="CarMatch"
+            android:textColor="@color/my_primary"
+            android:textSize="30sp"
+            app:layout_constraintEnd_toStartOf="@+id/amazonImage"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/amazonDesc"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="18dp"
+            android:text="Add Car"
+            android:textColor="@color/my_primary"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toStartOf="@+id/amazonImage"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/amazonName" />
+
+        <ImageView
+            android:id="@+id/amazonImage"
+            android:layout_width="0dp"
+            android:layout_height="160dp"
+            android:layout_marginEnd="16dp"
+            android:src="@drawable/baseline_car"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/amazonName"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:padding="10dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/amazonImage">
+
+            <ImageView
+                android:id="@+id/imgCar"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_margin="10dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_baseline_image_24"
+                android:contentDescription="Car Image"
+                android:clickable="true"
+                android:focusable="true"/>
+
+            <!-- <Button
+                android:id="@+id/btnSelectImage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:text="Select Image"
+                android:fontFamily="@font/poppins_semibold"
+                android:textSize="18sp"
+                app:cornerRadius="30dp" /> -->
+
+            <EditText
+                android:id="@+id/carModel"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_margin="15dp"
+                android:drawablePadding="8dp"
+                android:padding="8dp"
+                android:hint="Car Model"
+                android:inputType="text"
+                android:textColor="@color/black" />
+
+            <!-- <EditText
+                android:id="@+id/recipeType"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_margin="15dp"
+                android:drawablePadding="8dp"
+                android:padding="8dp"
+                android:hint="Car Brand"
+                android:inputType="text"
+                android:textColor="@color/black" /> -->
+
+
+            <Spinner
+                android:id="@+id/carBrandSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_margin="12dp"
+                android:padding="3dp"
+                android:prompt="@string/car_brand"
+                style="@style/Spinner"/>
+
+
+            <!-- <EditText
+                android:id="@+id/cookTime"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_margin="15dp"
+                android:drawablePadding="8dp"
+                android:padding="8dp"
+                android:hint="Car Category"
+                android:inputType="text"
+                android:textColor="@color/black" /> -->
+
+            <Spinner
+                android:id="@+id/carCatSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_margin="12dp"
+                android:padding="3dp"
+                android:prompt="@string/car_cat"
+                style="@style/Spinner"/>
+
+            <EditText
+                android:id="@+id/carPrice"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_margin="15dp"
+                android:drawablePadding="8dp"
+                android:padding="8dp"
+                android:hint="Car Price (RM)"
+                android:inputType="number"
+                android:textColor="@color/black" />
+
+            <!-- <EditText
+                android:id="@+id/perPerson"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_margin="15dp"
+                android:drawablePadding="8dp"
+                android:padding="8dp"
+                android:hint="Description"
+                android:inputType="text"
+                android:maxLines="3"
+                android:textColor="@color/black" /> -->
+
+            <TextView
+                android:id="@+id/interior"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginHorizontal="15dp"
+                android:layout_marginTop="40dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="Interior Features"
+                android:textColor="@color/my_primary"
+                android:textSize="30sp" />
+
+            <EditText
+                android:id="@+id/intF1"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_margin="15dp"
+                android:drawablePadding="8dp"
+                android:padding="8dp"
+                android:hint="Feature 1"
+                android:inputType="number"
+                android:textColor="@color/black" />
+
+            <EditText
+                android:id="@+id/intF2"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_margin="15dp"
+                android:drawablePadding="8dp"
+                android:padding="8dp"
+                android:hint="Feature 2"
+                android:inputType="number"
+                android:textColor="@color/black" />
+
+            <EditText
+                android:id="@+id/intF3"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_margin="15dp"
+                android:drawablePadding="8dp"
+                android:padding="8dp"
+                android:hint="Feature 3"
+                android:inputType="number"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/exterior"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginHorizontal="15dp"
+                android:layout_marginTop="40dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="Exterior Features"
+                android:textColor="@color/my_primary"
+                android:textSize="30sp" />
+
+            <EditText
+                android:id="@+id/extF1"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_margin="15dp"
+                android:drawablePadding="8dp"
+                android:padding="8dp"
+                android:hint="Feature 1"
+                android:inputType="number"
+                android:textColor="@color/black" />
+
+            <EditText
+                android:id="@+id/extF2"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_margin="15dp"
+                android:drawablePadding="8dp"
+                android:padding="8dp"
+                android:hint="Feature 2"
+                android:inputType="number"
+                android:textColor="@color/black" />
+
+            <EditText
+                android:id="@+id/extF3"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_margin="15dp"
+                android:drawablePadding="8dp"
+                android:padding="8dp"
+                android:hint="Feature 3"
+                android:inputType="number"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/safety"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginHorizontal="15dp"
+                android:layout_marginTop="40dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="Safety Features"
+                android:textColor="@color/my_primary"
+                android:textSize="30sp" />
+
+            <EditText
+                android:id="@+id/SF1"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_margin="15dp"
+                android:drawablePadding="8dp"
+                android:padding="8dp"
+                android:hint="Feature 1"
+                android:inputType="number"
+                android:textColor="@color/black" />
+
+            <EditText
+                android:id="@+id/SF2"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_margin="15dp"
+                android:drawablePadding="8dp"
+                android:padding="8dp"
+                android:hint="Feature 2"
+                android:inputType="number"
+                android:textColor="@color/black" />
+
+            <EditText
+                android:id="@+id/SF3"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_margin="15dp"
+                android:drawablePadding="8dp"
+                android:padding="8dp"
+                android:hint="Feature 3"
+                android:inputType="number"
+                android:textColor="@color/black" />
+
+            <Button
+                android:id="@+id/btnAddCar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:text="Add Car"
+                android:fontFamily="@font/poppins_semibold"
+                android:textSize="25sp"
+                app:cornerRadius="30dp" />
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
