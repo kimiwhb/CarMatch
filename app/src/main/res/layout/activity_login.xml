@@ -5,7 +5,8 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".Login">
+    tools:context=".Login"
+    android:background="@drawable/carmatch_bg">
 
     <!-- Add background photo or other layout elements here -->
 
@@ -33,7 +34,7 @@
                 android:gravity="center"
                 android:textColor="#000000"
                 android:textSize="18sp"
-                android:text="Login Here"/>
+                android:text="Login"/>
 
             <EditText
                 android:layout_marginTop="20dp"
@@ -60,7 +61,8 @@
                 android:id="@+id/LoginBtn"
                 android:textSize="18sp"
                 android:layout_marginTop="20dp"
-                android:textColor="@color/black"/>
+                android:textColor="@color/black"
+                android:background="@color/my_primary"/>
 
 
             <!-- Other attributes -->
@@ -83,7 +85,8 @@
                     android:id="@+id/registerNowBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Register Now"/>
+                    android:text="Register Now"
+                    android:textStyle="bold"/>
             </LinearLayout>
         </LinearLayout>
     </androidx.cardview.widget.CardView>

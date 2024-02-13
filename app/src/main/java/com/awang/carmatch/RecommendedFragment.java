@@ -12,6 +12,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -36,6 +40,9 @@ public class RecommendedFragment extends Fragment {
     CarAdapter adapter;
     DatabaseReference databaseReference, databaseUser;
     ValueEventListener eventListener;
+    EditText minRange;
+    TextView maxRange;
+    ImageView searchRange, clear;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -84,6 +91,10 @@ public class RecommendedFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_recommended, container, false);
 
         recyclerView = rootView.findViewById(R.id.recyclerView);
+        maxRange = rootView.findViewById(R.id.maxRange);
+        minRange = rootView.findViewById(R.id.minRange);
+        searchRange = rootView.findViewById(R.id.searchRange);
+        clear = rootView.findViewById(R.id.clear);
 
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 1);
         recyclerView.setLayoutManager(gridLayoutManager);
@@ -94,13 +105,11 @@ public class RecommendedFragment extends Fragment {
         databaseReference = FirebaseDatabase.getInstance().getReference().child("cars");
         databaseUser = FirebaseDatabase.getInstance().getReference().child("users");
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setCancelable(false);
-        builder.setView(R.layout.progress_layout);
-        AlertDialog dialog = builder.create();
-        dialog.show();
+        retrieveDataFromDatabase();
 
-        databaseUser.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("budget")
+        // String minRangeTxt = minRange.getText().toString();
+
+        /* databaseUser.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("budget")
                 .addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -115,6 +124,8 @@ public class RecommendedFragment extends Fragment {
                             try {
                                 CarClass carClass = itemSnapshot.getValue(CarClass.class);
                                 if (carClass != null && userBudget != null) {
+                                    maxRange.setText(userBudget);
+
                                     int userBudgetInt = Integer.parseInt(userBudget);
                                     int carPriceInt = Integer.parseInt(carClass.getCarPrice());
 
@@ -149,8 +160,149 @@ public class RecommendedFragment extends Fragment {
                 // Log or handle the error
                 Log.e("CarList", "DatabaseError: " + error.getMessage());
             }
+        }); */
+
+        clear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                minRange.setText("");
+                retrieveDataFromDatabase();
+            }
+        });
+
+        searchRange.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String minRangeTxt = minRange.getText().toString();
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                builder.setCancelable(false);
+                builder.setView(R.layout.progress_layout);
+                AlertDialog dialog = builder.create();
+                dialog.show();
+
+                databaseUser.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("budget")
+                        .addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                String userBudget = snapshot.getValue(String.class);
+                                // Log.d("User Budget", userBudget);
+                                maxRange.setText(userBudget);
+
+                                eventListener = databaseReference.addValueEventListener(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                        carList.clear();
+                                        for (DataSnapshot itemSnapshot : snapshot.getChildren()) {
+                                            try {
+                                                CarClass carClass = itemSnapshot.getValue(CarClass.class);
+                                                if (!minRangeTxt.isEmpty()) {
+                                                    int minRangeInt = Integer.parseInt(minRangeTxt);
+                                                    int maxRangeInt = Integer.parseInt(userBudget);
+
+
+
+                                                    int carPriceInt = Integer.parseInt(carClass.getCarPrice());
+
+                                                    if (carPriceInt >= minRangeInt && carPriceInt <= maxRangeInt) {
+                                                        carClass.setKey(itemSnapshot.getKey());
+                                                        carList.add(carClass);
+                                                    }
+                                                } else {
+                                                    // Log or handle the case where conversion to CarClass is unsuccessful
+                                                    Toast.makeText(getActivity(), "Enter min. amount for personalized list of cars.", Toast.LENGTH_SHORT).show();
+                                                    Log.e("Search", "Min range is empty.");
+                                                    retrieveDataFromDatabase();
+                                                }
+                                            } catch (DatabaseException e) {
+                                                // Log or handle the exception
+                                                Log.e("CarList", "Exception: " + e.getMessage());
+                                            }
+
+                                            adapter.notifyDataSetChanged();
+                                            dialog.dismiss();
+                                        }
+
+                                    }
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError error) {
+
+                                    }
+                                });
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+                                // Log or handle the error
+                                Log.e("CarList", "DatabaseError: " + error.getMessage());
+                            }
+                        });
+            }
         });
 
         return rootView;
     }
+
+    private void retrieveDataFromDatabase() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setCancelable(false);
+        builder.setView(R.layout.progress_layout);
+        AlertDialog dialog = builder.create();
+        dialog.show();
+
+        databaseUser.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("budget")
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        String userBudget = snapshot.getValue(String.class);
+                        // Log.d("User Budget", userBudget);
+
+                        eventListener = databaseReference.addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                carList.clear();
+                                for (DataSnapshot itemSnapshot : snapshot.getChildren()) {
+                                    try {
+                                        CarClass carClass = itemSnapshot.getValue(CarClass.class);
+                                        if (carClass != null && userBudget != null) {
+                                            maxRange.setText(userBudget);
+
+                                            int userBudgetInt = Integer.parseInt(userBudget);
+                                            int carPriceInt = Integer.parseInt(carClass.getCarPrice());
+
+                                            if (carPriceInt < userBudgetInt) {
+                                                carClass.setKey(itemSnapshot.getKey());
+                                                carList.add(carClass);
+                                            }
+                                        } else {
+                                            // Log or handle the case where conversion to CarClass is unsuccessful
+                                            Log.e("CarList", "Failed to convert to CarClass: " + itemSnapshot.toString());
+                                        }
+                                    } catch (DatabaseException e) {
+                                        // Log or handle the exception
+                                        Log.e("CarList", "Exception: " + e.getMessage());
+                                    }
+
+                                    adapter.notifyDataSetChanged();
+                                    dialog.dismiss();
+                                }
+
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+                        });
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        // Log or handle the error
+                        Log.e("CarList", "DatabaseError: " + error.getMessage());
+                    }
+                });
+    }
+
 }

@@ -5,7 +5,8 @@ xmlns:app="http://schemas.android.com/apk/res-auto"
 xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
-tools:context=".CarList">
+tools:context=".CarList"
+    android:background="@drawable/carmatch_bg">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
@@ -22,8 +23,7 @@ tools:context=".CarList">
             android:contentDescription="Back Button"
             android:src="@drawable/ic_baseline_arrow_back_24"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:tint="@color/my_primary" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/amazonName"
@@ -33,7 +33,6 @@ tools:context=".CarList">
             android:layout_marginTop="40dp"
             android:fontFamily="@font/poppins_semibold"
             android:text="CarMatch"
-            android:textColor="@color/my_primary"
             android:textSize="30sp"
             app:layout_constraintEnd_toStartOf="@+id/amazonImage"
             app:layout_constraintStart_toStartOf="parent"
@@ -45,7 +44,6 @@ tools:context=".CarList">
             android:layout_height="wrap_content"
             android:layout_marginStart="18dp"
             android:text="Car List"
-            android:textColor="@color/my_primary"
             android:textSize="14sp"
             app:layout_constraintEnd_toStartOf="@+id/amazonImage"
             app:layout_constraintStart_toStartOf="parent"

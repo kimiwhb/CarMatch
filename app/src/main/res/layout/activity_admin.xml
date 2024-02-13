@@ -5,8 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorBg"
-    tools:context=".AdminActivity">
+    tools:context=".AdminActivity"
+    android:background="@drawable/carmatch_bg">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -20,7 +20,6 @@
             android:id="@+id/amazonName"
             android:text="CarMatch"
             android:textSize="30sp"
-            android:textColor="@color/my_primary"
             android:layout_marginStart="18dp"
             android:layout_marginTop="40dp"
             android:fontFamily="@font/poppins_semibold"
@@ -35,7 +34,6 @@
             android:text="Admin Dashboard"
             android:textSize="14sp"
             android:layout_marginStart="18dp"
-            android:textColor="@color/my_primary"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/amazonName"
             app:layout_constraintEnd_toStartOf="@+id/amazonImage"/>
