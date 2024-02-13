@@ -17,15 +17,30 @@
         android:theme="@style/Theme.CarMatch"
         tools:targetApi="31">
         <activity
-            android:name=".MapDealership"
+            android:name=".DealerMap"
             android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
         </activity>
+        <activity
+            android:name=".AdminProfile"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".MapDealership"
+            android:exported="false" />
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyCWMVtopJpEpqLNAunBMpjGMK4G4wicF9k"/>
+            android:value="AIzaSyCWMVtopJpEpqLNAunBMpjGMK4G4wicF9k" />
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
+
         <activity
             android:name=".DealerList"
             android:exported="false">

@@ -14,14 +14,14 @@
 
     <string name="car_brand">Choose a car brand</string>
     <array name="car_brands">
-        <item>Car Brand</item>
+        <item>Select a Car Brand</item>
         <item>Proton</item>
         <item>Perodua</item>
     </array>
 
     <string name="car_cat">Choose a car brand</string>
     <array name="car_cats">
-        <item>Car Category</item>
+        <item>Select a Car Category</item>
         <item>SUV</item>
         <item>MPV</item>
         <item>Hatchback</item>

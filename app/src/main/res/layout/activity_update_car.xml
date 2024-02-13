@@ -144,7 +144,7 @@
                         android:textStyle="bold"
                         android:textColor="@color/my_primary"
                         android:textSize="18sp"/>
-                    <EditText
+                    <!-- <EditText
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/carBrand"
@@ -152,7 +152,16 @@
                         android:layout_weight="1"
                         android:textAlignment="viewEnd"
                         android:textColor="@color/black"
-                        android:textSize="18sp"/>
+                        android:textSize="18sp"/> -->
+                    <Spinner
+                        android:id="@+id/carBrandSpinner"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textAlignment="viewEnd"
+                        android:prompt="@string/car_brand"
+                        android:textColor="@color/black"
+                        style="@style/Spinner"/>
                 </LinearLayout>
 
                 <androidx.appcompat.widget.AppCompatImageView
@@ -172,12 +181,12 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/cat"
-                        android:layout_weight="1"
+                        android:layout_weight="2"
                         android:text="Car Category"
                         android:textStyle="bold"
                         android:textColor="@color/my_primary"
                         android:textSize="18sp"/>
-                    <EditText
+                    <!-- <EditText
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/carCat"
@@ -185,7 +194,16 @@
                         android:layout_weight="1"
                         android:textAlignment="viewEnd"
                         android:textColor="@color/black"
-                        android:textSize="18sp"/>
+                        android:textSize="18sp"/> -->
+                    <Spinner
+                        android:id="@+id/carCatSpinner"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textAlignment="viewEnd"
+                        android:prompt="@string/car_cat"
+                        android:textColor="@color/black"
+                        style="@style/Spinner"/>
                 </LinearLayout>
 
                 <androidx.appcompat.widget.AppCompatImageView
@@ -216,6 +234,7 @@
                         android:id="@+id/carPrice"
                         android:text="car price"
                         android:layout_weight="1"
+                        android:inputType="number"
                         android:textAlignment="viewEnd"
                         android:textColor="@color/black"
                         android:textSize="18sp"/>
@@ -238,7 +257,7 @@
                 app:layout_constraintStart_toStartOf="@id/linearLayout"
                 app:layout_constraintTop_toBottomOf="@id/linearLayout"/>
 
-            <Button
+            <!-- <Button
                 android:layout_width="0dp"
                 android:layout_height="60dp"
                 android:id="@+id/deleteButton"
@@ -250,7 +269,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@id/updateButton"
                 app:layout_constraintStart_toStartOf="@id/updateButton"
-                app:layout_constraintTop_toBottomOf="@id/updateButton"/>
+                app:layout_constraintTop_toBottomOf="@id/updateButton"/> -->
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

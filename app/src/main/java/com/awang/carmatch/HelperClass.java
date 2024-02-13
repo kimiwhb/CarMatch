@@ -2,7 +2,7 @@ package com.awang.carmatch;
 
 public class HelperClass {
 
-    String name, email, phone, password;
+    String name, email, phone, password, budget;
 
     public String getName() {
         return name;
@@ -36,11 +36,20 @@ public class HelperClass {
         this.password = password;
     }
 
-    public HelperClass(String name, String email, String phone, String password) {
+    public String getBudget() {
+        return budget;
+    }
+
+    public void setBudget(String budget) {
+        this.budget = budget;
+    }
+
+    public HelperClass(String name, String email, String phone, String budget, String password) {
         this.name = name;
         this.email = email;
         this.phone = phone;
         this.password = password;
+        this.budget = budget;
     }
 
     public HelperClass() {
